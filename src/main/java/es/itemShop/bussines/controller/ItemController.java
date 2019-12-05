@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,21 +45,22 @@ public class ItemController {
 		return itemService.findItemById(id);
 	}
 
-	@DeleteMapping(value = "/erase/{id}")
-	public ResponseEntity<?> eraseItem(@PathVariable Integer id) {
-		return itemService.eraseItem(id);
+	// Borrado lógico, cambiar estado
+	@PostMapping(path = "/change-state/{id}/{state}", headers="Accept=application/json")
+	public ResponseEntity<?> changeState(@PathVariable Integer id, @PathVariable Integer state) {
+		return itemService.changeState(id, state);
 	}
 
 	// Crear nuevo Item 
 	@PostMapping(path = "/new", headers="Accept=application/json")
-	public ItemDao createItem(@RequestBody ItemDao personaBody, HttpServletResponse response) {
-		return itemService.newItem(personaBody, response);
+	public ItemDao createItem(@RequestBody ItemDao itemBody, HttpServletResponse response) {
+		return itemService.newItem(itemBody, response);
 	}
 
 	// Actualizar Item
 	@PutMapping(path = "/update/{id}", headers="Accept=application/json")
 	public ResponseEntity<?> editItem(@PathVariable(value = "id") Integer id,
-			RequestEntity<ItemDao> reqPersonajes) {
-		return itemService.updateItem(id, reqPersonajes.getBody());
+			RequestEntity<ItemDao> reqitem) {
+		return itemService.updateItem(id, reqitem.getBody());
 	}
 }

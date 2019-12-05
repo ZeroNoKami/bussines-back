@@ -60,32 +60,21 @@ public class ItemService {
 			}
 		
 			if (repoItem.findById(Long.valueOf(id)).isPresent()) {
-				ItemDao newPersonajes = tituloSinCamposNulls(personaje, repoItem.findById(Long.valueOf(id)).get());
-				return new ResponseEntity<ItemDao>(repoItem.save(newPersonajes), HttpStatus.OK);
+				return new ResponseEntity<ItemDao>(repoItem.save(personaje), HttpStatus.OK);
 			} else {
 				return new ResponseEntity<String>("No se ha encontrado", HttpStatus.NOT_FOUND);
 			}
 	    }
 
-	    // Metodo auxiliar para evitar updates con nulls
-	    private ItemDao tituloSinCamposNulls(ItemDao newItem, ItemDao oldItem) {
-	        
-//	        if(newItem.getDescription()!=null)
-//	            oldItem.setDescription(newItem.getDescription());
-//	        if(newItem.getPrice()!=null)
-//	            oldItem.setPrice(newItem.getPrice());
-//	        if(newItem.getPrice_reduccion()!=null)
-//	            oldItem.setPrice_reduccion(newItem.getPrice_reduccion());
-//	        if(newItem.getState()!=null)
-//	            oldItem.setState(newItem.getState());
-//	        if(newItem.getCreation_date()!=null)
-//	            oldItem.setCreation_date(newItem.getCreation_date());
-//	        if(newItem.getCreation_user()!=null)
-//	            oldItem.setCreation_user(newItem.getCreation_user());  
-	        return oldItem;
-	    }    
-
-
+		public ResponseEntity<?> changeState(Integer id, Integer state) {
+			if (repoItem.findById(Long.valueOf(id)).isPresent()) {
+				ItemDao newItem =  repoItem.findById(Long.valueOf(id)).get();
+				newItem.setState(Long.valueOf(state));
+				return new ResponseEntity<ItemDao>(repoItem.save(newItem), HttpStatus.OK);
+			} else {
+				return new ResponseEntity<String>("No se ha encontrado", HttpStatus.NOT_FOUND);
+			}
+		}    
 		
 	
 }
