@@ -71,9 +71,9 @@ DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `id_item` int(11) NOT NULL AUTO_INCREMENT,
   `name_item` varchar(50) NOT NULL,
-  `description` varchar(250) NOT NULL,
+  `description` text NOT NULL,
   `price` int(11) NOT NULL,
-  `state` int(11) NOT NULL DEFAULT '1',
+  `state` boolean NOT NULL DEFAULT '1',
   `supplier` int(11) NOT NULL,
   `price_reduccion` int(11) NOT NULL,
   `creation_date` date NOT NULL,
