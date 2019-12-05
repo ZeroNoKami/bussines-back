@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: bussines_case
+-- Host: localhost    Database: bussines_case
 -- ------------------------------------------------------
 -- Server version	5.7.17-log
 
@@ -71,9 +71,9 @@ DROP TABLE IF EXISTS `item`;
 CREATE TABLE `item` (
   `id_item` int(11) NOT NULL AUTO_INCREMENT,
   `name_item` varchar(50) NOT NULL,
-  `description` varchar(250) NOT NULL,
+  `description` text NOT NULL,
   `price` int(11) NOT NULL,
-  `state` int(11) NOT NULL DEFAULT '1',
+  `state` tinyint(1) NOT NULL DEFAULT '1',
   `supplier` int(11) NOT NULL,
   `price_reduccion` int(11) NOT NULL,
   `creation_date` date NOT NULL,
@@ -85,7 +85,7 @@ CREATE TABLE `item` (
   CONSTRAINT `item_ibfk_1` FOREIGN KEY (`supplier`) REFERENCES `suppliers` (`id_supplier`),
   CONSTRAINT `item_ibfk_2` FOREIGN KEY (`price_reduccion`) REFERENCES `reduced_price` (`id_reduced`),
   CONSTRAINT `item_ibfk_3` FOREIGN KEY (`creation_user`) REFERENCES `users` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +94,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` VALUES (1,'Berserk','Manga Berserk tamaño Tankobon',15,1,2,1,'2019-01-01',1),(2,'Steel Ball Run','Manga Steel Ball Run tamaño Tankobon',15,1,1,2,'2019-01-01',2);
+INSERT INTO `item` VALUES (1,'Berserk','Berserk es un manga creado por Kentaro Miura y posteriormente adaptado en anime, con un estilo épico fantástico y de fantasía oscura. Miura publicó un prototipo de Berserk en 1988. El manga comenzó a publicarse al año siguiente en la extinta revista mensual Animal House, hasta que fue reemplazada en 1992 por la revista quincenal Young Animal, donde Berserk continúa siendo publicado a un ritmo irregular. ',15,1,2,1,'2019-01-01',1),(2,'Steel Ball Run','Steel Ball Run es la parte de reinicio y séptima historia de la serie de manga japonesa JoJos Bizarre Adventure, escrita e ilustrada por Hirohiko Araki. Ambientada en 1890, está protagonizada por Gyro Zeppeli, un antiguo verdugo deshonrado, y Johnny Joestar, un ex jockey que recibió un disparo y perdió el uso de sus piernas, así como su fama y fortuna. Ellos, junto con otros, compiten en una carrera a través de todo Estados Unidos por 50 millones de dólares. ',15,1,1,2,'2019-01-01',2),(3,'Berserk MAXIMUN','Manga Berserk tamaño doble tomo.Berserk es un manga creado por Kentaro Miura y posteriormente adaptado en anime, con un estilo épico \nfantástico y de fantasía oscura. Miura publicó un prototipo de Berserk en 1988. El manga comenzó a publicarse al año siguiente en la \nextinta revista mensual Animal House, hasta que fue reemplazada en 1992 por la revista quincenal Young Animal, donde Berserk continúa \nsiendo publicado a un ritmo irregular',15,1,1,1,'2019-01-01',1);
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,4 +211,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-03 12:51:49
+-- Dump completed on 2019-12-05 19:29:30
