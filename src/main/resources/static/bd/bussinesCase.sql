@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.16, for Win64 (x86_64)
 --
--- Host: localhost    Database: bussines_case
+-- Host: 127.0.0.1    Database: bussines_case
 -- ------------------------------------------------------
 -- Server version	5.7.17-log
 
@@ -14,8 +14,8 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
+DROP DATABASE IF EXISTS `bussinesCase`;
+CREATE DATABASE `bussinesCase`;
 -- Table structure for table `country`
 --
 
@@ -57,7 +57,7 @@ CREATE TABLE `hibernate_sequence` (
 
 LOCK TABLES `hibernate_sequence` WRITE;
 /*!40000 ALTER TABLE `hibernate_sequence` DISABLE KEYS */;
-INSERT INTO `hibernate_sequence` VALUES (1),(1),(1),(1);
+INSERT INTO `hibernate_sequence` VALUES (18),(18),(18),(18);
 /*!40000 ALTER TABLE `hibernate_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -78,6 +78,7 @@ CREATE TABLE `item` (
   `price_reduccion` int(11) NOT NULL,
   `creation_date` date NOT NULL,
   `creation_user` int(11) NOT NULL,
+  `msnDiscont` text,
   PRIMARY KEY (`id_item`),
   KEY `supplier` (`supplier`),
   KEY `price_reduccion` (`price_reduccion`),
@@ -94,7 +95,7 @@ CREATE TABLE `item` (
 
 LOCK TABLES `item` WRITE;
 /*!40000 ALTER TABLE `item` DISABLE KEYS */;
-INSERT INTO `item` VALUES (1,'Berserk','Berserk es un manga creado por Kentaro Miura y posteriormente adaptado en anime, con un estilo épico fantástico y de fantasía oscura. Miura publicó un prototipo de Berserk en 1988. El manga comenzó a publicarse al año siguiente en la extinta revista mensual Animal House, hasta que fue reemplazada en 1992 por la revista quincenal Young Animal, donde Berserk continúa siendo publicado a un ritmo irregular. ',15,1,2,1,'2019-01-01',1),(2,'Steel Ball Run','Steel Ball Run es la parte de reinicio y séptima historia de la serie de manga japonesa JoJos Bizarre Adventure, escrita e ilustrada por Hirohiko Araki. Ambientada en 1890, está protagonizada por Gyro Zeppeli, un antiguo verdugo deshonrado, y Johnny Joestar, un ex jockey que recibió un disparo y perdió el uso de sus piernas, así como su fama y fortuna. Ellos, junto con otros, compiten en una carrera a través de todo Estados Unidos por 50 millones de dólares. ',15,1,1,2,'2019-01-01',2),(3,'Berserk MAXIMUN','Manga Berserk tamaño doble tomo.Berserk es un manga creado por Kentaro Miura y posteriormente adaptado en anime, con un estilo épico \nfantástico y de fantasía oscura. Miura publicó un prototipo de Berserk en 1988. El manga comenzó a publicarse al año siguiente en la \nextinta revista mensual Animal House, hasta que fue reemplazada en 1992 por la revista quincenal Young Animal, donde Berserk continúa \nsiendo publicado a un ritmo irregular',15,1,1,1,'2019-01-01',1);
+INSERT INTO `item` VALUES (1,'Berserk','Berserk es un manga creado por Kentaro Miura y posteriormente adaptado en anime, con un estilo épico fantástico y de fantasía oscura. Miura publicó un prototipo de Berserk en 1988. El manga comenzó a publicarse al año siguiente en la extinta revista mensual Animal House, hasta que fue reemplazada en 1992 por la revista quincenal Young Animal, donde Berserk continúa siendo publicado a un ritmo irregular. ',15,1,2,1,'2019-01-01',1,''),(2,'Steel Ball Run','Steel Ball Run es la parte de reinicio y séptima historia de la serie de manga japonesa JoJos Bizarre Adventure, escrita e ilustrada por Hirohiko Araki. Ambientada en 1890, está protagonizada por Gyro Zeppeli, un antiguo verdugo deshonrado, y Johnny Joestar, un ex jockey que recibió un disparo y perdió el uso de sus piernas, así como su fama y fortuna. Ellos, junto con otros, compiten en una carrera a través de todo Estados Unidos por 50 millones de dólares. ',15,1,1,2,'2019-01-01',2,''),(3,'Berserk MAXIMUN','Manga Berserk tamaño doble tomo.Berserk es un manga creado por Kentaro Miura y posteriormente adaptado en anime, con un estilo épico \nfantástico y de fantasía oscura. Miura publicó un prototipo de Berserk en 1988. El manga comenzó a publicarse al año siguiente en la \nextinta revista mensual Animal House, hasta que fue reemplazada en 1992 por la revista quincenal Young Animal, donde Berserk continúa \nsiendo publicado a un ritmo irregular',15,1,1,1,'2019-01-01',1,'');
 /*!40000 ALTER TABLE `item` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +112,7 @@ CREATE TABLE `reduced_price` (
   `end_date` date NOT NULL,
   `reduced_percent` int(11) NOT NULL,
   PRIMARY KEY (`id_reduced`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +121,7 @@ CREATE TABLE `reduced_price` (
 
 LOCK TABLES `reduced_price` WRITE;
 /*!40000 ALTER TABLE `reduced_price` DISABLE KEYS */;
-INSERT INTO `reduced_price` VALUES (1,'2019-01-01','2019-12-01',50),(2,'2019-11-01','2020-06-01',90);
+INSERT INTO `reduced_price` VALUES (1,'2019-01-01','2019-12-01',50),(2,'2019-11-01','2020-06-01',90),(3,'0000-00-00','0000-00-00',0);
 /*!40000 ALTER TABLE `reduced_price` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -211,4 +212,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-05 19:29:30
+-- Dump completed on 2019-12-06  6:38:36
