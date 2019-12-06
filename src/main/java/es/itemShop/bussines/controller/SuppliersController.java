@@ -38,29 +38,5 @@ public class SuppliersController {
 	public List<SupplierDao> showSuppliersList() {
 		return supplierService.findAllSupplier();
 	} 
- 
 
-	// Mostrar un proovedores 
-	@GetMapping("/view/{id}")
-	public SupplierDao showSuppliers(@PathVariable Integer id) {
-		return supplierService.findSupplierById(id);
-	}
-
-	@DeleteMapping(value = "/erase/{id}")
-	public ResponseEntity<?> eraseSuppliers(@PathVariable Integer id) {
-		return supplierService.eraseSupplier(id);
-	}
-
-	// Crear nuevo proovedores 
-	@PostMapping(path = "/new", headers="Accept=application/json")
-	public SupplierDao createSuppliers(@RequestBody SupplierDao personaBody, HttpServletResponse response) {
-		return supplierService.newSupplier(personaBody, response);
-	}
-
-	// Actualizar proovedores
-	@PutMapping(path = "/update/{id}", headers="Accept=application/json")
-	public ResponseEntity<?> editSuppliers(@PathVariable(value = "id") Integer id,
-			RequestEntity<SupplierDao> reqPersonajes) {
-		return supplierService.updateSupplier(id, reqPersonajes.getBody());
-	}
 }

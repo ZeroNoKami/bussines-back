@@ -5,7 +5,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,9 +45,9 @@ public class ItemController {
 	}
 
 	// Borrado lógico, cambiar estado
-	@PostMapping(path = "/change-state/{id}/{state}", headers="Accept=application/json")
-	public ResponseEntity<?> changeState(@PathVariable Integer id, @PathVariable Integer state) {
-		return itemService.changeState(id, state);
+	@PutMapping(path = "/deactiState/{id}/{state}", headers="Accept=application/json")
+	public ResponseEntity<?> deactivateState(@PathVariable Integer id, @PathVariable Integer state) {
+		return itemService.deactivateState(id, state);
 	}
 
 	// Crear nuevo Item 
@@ -56,11 +55,11 @@ public class ItemController {
 	public ItemDao createItem(@RequestBody ItemDao itemBody, HttpServletResponse response) {
 		return itemService.newItem(itemBody, response);
 	}
-
-	// Actualizar Item
-	@PutMapping(path = "/update/{id}", headers="Accept=application/json")
-	public ResponseEntity<?> editItem(@PathVariable(value = "id") Integer id,
-			RequestEntity<ItemDao> reqitem) {
-		return itemService.updateItem(id, reqitem.getBody());
+	
+	// Editar Item 
+	@PutMapping(path = "/edit/{id}", headers="Accept=application/json")
+	public ItemDao editItem(@PathVariable(value = "id") Long id, @RequestBody ItemDao itemBody, HttpServletResponse response) {
+		return itemService.editItem(id, itemBody, response);
 	}
+
 }

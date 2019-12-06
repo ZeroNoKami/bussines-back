@@ -1,5 +1,7 @@
 package es.itemShop.bussines.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,11 +33,28 @@ public class ItemDao {
     @JoinColumn(name = "price_reduccion", nullable = false)
     private ReducedPriceDao price_reduccion;	
 	@Column(name = "creation_date")
-	private Long creation_date;
+	private Date creation_date;
     @ManyToOne
     @JoinColumn(name = "creation_user", nullable = false)
     private UserDao creation_user;
-	 
+	
+    public ItemDao(){}
+    
+    
+	public ItemDao(Long id_item, ItemDao itd) {
+		super();
+		this.id_item = id_item;
+		this.name_item = itd.getName_item();
+		this.description = itd.getDescription();
+		this.price = itd.getPrice();
+		this.state = itd.getState();
+		this.supplier = itd.getSupplier();
+		this.price_reduccion = itd.getPrice_reduccion();
+		this.creation_date = itd.getCreation_date();
+		this.creation_user = itd.getCreation_user();
+	}
+
+
 	//----- GETTERS Y SETTERS -----// 
 	// ID ITEM
 	public Long getId_item() {
@@ -94,11 +113,11 @@ public class ItemDao {
 	}
 	
 	// CREATION DATE
-	public Long getCreation_date() {
+	public Date getCreation_date() {
 		return creation_date;
 	}
 	
-	public void setCreation_date(Long creation_date) {
+	public void setCreation_date(Date creation_date) {
 		this.creation_date = creation_date;
 	}
 	

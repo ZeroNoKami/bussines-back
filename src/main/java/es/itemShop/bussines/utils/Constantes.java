@@ -2,6 +2,8 @@ package es.itemShop.bussines.utils;
 
 
 public class Constantes {
+	// SETTEAR EN INACTIVO
+	public static final Long INACTIVO   					= 0L;
 	//Tipos de usuario
 	public static final String ADMIN 						= "ADMIN";
 	public static final String USER 	    				= "USER";

@@ -31,7 +31,8 @@ public class UserService {
 	    
 	    // Busqueda de un item por su ID
 	    public UserDao findUserById(Integer id){    
-	        return repoUser.findById(Long.valueOf(id)).get();
+	    	UserDao us = repoUser.findById(Long.valueOf(id)).get();
+	        return us;
 	    }
 
 	    // Creacion de un nuevo item
