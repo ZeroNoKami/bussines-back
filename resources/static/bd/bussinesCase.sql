@@ -15,11 +15,14 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+DROP DATABASE IF EXISTS `bussines_case`;
+CREATE DATABASE `bussines_case`;
+USE `bussines_case`;
+
 --
 -- Table structure for table `country`
 --
-DROP DATABASE IF EXISTS `bussinesCase`;
-CREATE DATABASE `bussinesCase`;
+
 DROP TABLE IF EXISTS `country`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
