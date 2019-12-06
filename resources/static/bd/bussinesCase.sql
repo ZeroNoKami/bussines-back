@@ -18,7 +18,8 @@
 --
 -- Table structure for table `country`
 --
-
+DROP DATABASE IF EXISTS `bussinesCase`;
+CREATE DATABASE `bussinesCase`;
 DROP TABLE IF EXISTS `country`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
