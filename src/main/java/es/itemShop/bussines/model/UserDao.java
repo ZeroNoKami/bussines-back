@@ -19,6 +19,10 @@ public class UserDao{
 	private Long id_user;
 	@Column(name = "username")
 	private String username;
+	@Column(name = "email")
+	private String email;
+	@Column(name = "password")
+	private String password;
 	@ManyToOne
     @JoinColumn(name = "rol_user", nullable = false)	
     private RolUserDao rol_user;
@@ -39,7 +43,18 @@ public class UserDao{
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	// ROL USER
 	public RolUserDao getRol_user() {
 		return rol_user;
