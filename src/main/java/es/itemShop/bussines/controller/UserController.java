@@ -39,29 +39,5 @@ public class UserController{
 		return userService.findAllUser();
 	} 
  
-
-	// Mostrar un usuario
-	@GetMapping("/view/{id}")
-	public UserDao showUser(@PathVariable Integer id) {
-		return userService.findUserById(id);
-	}
-
-	@DeleteMapping(value = "/erase/{id}")
-	public ResponseEntity<?> eraseUser(@PathVariable Integer id) {
-		return userService.eraseUser(id);
-	}
-
-	// Crear nuevo usuario
-	@PostMapping(path = "/new", headers="Accept=application/json")
-	public UserDao createUser(@RequestBody UserDao personaBody, HttpServletResponse response) {
-		return userService.newUser(personaBody, response);
-	}
-
-	// Actualizar usuario
-	@PutMapping(path = "/update/{id}", headers="Accept=application/json")
-	public ResponseEntity<?> editUser(@PathVariable(value = "id") Integer id,
-			RequestEntity<UserDao> reqPersonajes) {
-		return userService.updateUser(id, reqPersonajes.getBody());
-	}
 		
 }
