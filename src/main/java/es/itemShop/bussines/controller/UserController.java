@@ -32,12 +32,11 @@ public class UserController{
     public UserController(UserService userService) {
         this.userService = userService;
     }
-    
-	// Lista de usuarios
-	@GetMapping("/list")
-	public List<UserDao> showUserList() {
-		return userService.findAllUser();
-	} 
- 
-		
+
+	// Mostrar un usuario
+	@GetMapping("/view/{id}")
+	public UserDao showUser(@PathVariable Integer id) {
+		return userService.findUserById(id);
+	}
+
 }
